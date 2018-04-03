@@ -1,15 +1,14 @@
-define(['knockout'], function(ko) {
+define(['knockout','json!app/products.json'], function(ko,products_json) {
+
     var CartLine = function(item, quantity = 1){
         return {product: item, quantity: ko.observable(quantity)}
     }
     
     return function ProductsModel(){
         self = this;
-        self.products = [
-            { id: 1, name: 'Mango', price: 350 },
-            { id: 2, name: 'Lychi', price: 700 },
-            { id: 3, name: 'Papya', price: 60 }
-        ];
+
+        self.products = products_json;
+        console.log(self.products )
         self.cart_items = ko.observableArray();
     
         self.addToCart = function(item){
