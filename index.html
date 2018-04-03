@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mini shop</title>
-    <script type='text/javascript' src='knockout-3.4.2.js'></script>
+    <script type='text/javascript' data-main="app" src="lib/require.js"></script>
+    <!-- <script type='text/javascript' src='knockout-3.4.2.js'></script> -->
 </head>
 <body>
     <h1>MiniShop</h1>
@@ -27,9 +28,6 @@
             <span data-bind="text: product.price"></span>
         </li>
     </ul>
-
-    <!-- View model -->
-    <script type='text/javascript' src='model.js'></script>
 
 </body>
 </html>
