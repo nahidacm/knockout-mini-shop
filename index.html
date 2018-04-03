@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mini shop</title>
+    <script type='text/javascript' src='knockout-3.4.2.js'></script>
+</head>
+<body>
+    <h1>MiniShop</h1>
+
+    <h4>Awesome Products</h4>
+    <ul data-bind="foreach: products">
+        <li>
+            <span data-bind="text: name" class="product_name"></span>
+            <span data-bind="text: price" class="product_price"></span>
+            <button data-bind="click: $parent.addToCart">Add To Cart</button>
+        </li>
+    </ul>
+
+    <h4>My Cart</h4>
+    <ul data-bind="foreach: cart_items">
+        <li>
+            <span data-bind="text: product.name"></span>
+            <span data-bind="text: quantity"></span>
+            <span data-bind="text: product.price"></span>
+        </li>
+    </ul>
+
+    <!-- View model -->
+    <script type='text/javascript'>
+
+        var CartLine = function(item, quantity = 1){
+            return {product: item, quantity: ko.observable(quantity)}
+        }
+
+        function ProductsModel(){
+            self = this;
+            self.products = [
+                { id: 1, name: 'Mango', price: 350 },
+                { id: 2, name: 'Lychi', price: 700 },
+                { id: 3, name: 'Papya', price: 60 }
+            ];
+            self.cart_items = ko.observableArray();
+
+            self.addToCart = function(item){
+                var new_in_cart = true;
+                var qty = 1
+                self.cart_items().forEach(function(element,index,cart_items) {
+                    if(element.product.id === item.id){
+                        qty = cart_items[index].quantity()
+                        cart_items[index].quantity(++qty)
+                        new_in_cart = false
+                        return
+                    }
+                });
+                if(new_in_cart)
+                    self.cart_items.push(new CartLine(item, qty))
+            }
+        }
+        
+        ko.applyBindings(new ProductsModel())
+
+    </script>
+
+</body>
+</html>
