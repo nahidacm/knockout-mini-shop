@@ -13,10 +13,19 @@ body ul li{
 }
 .product-list ul li{
     width: 200px;
+    height: 300px;
     margin: 5px;
     float: left;
+}
+.product-list .product_name{
+    display: block;
+    font-weight: bold;
 }
 .cart-list{
     width: 20%;
     float: right;
+}
+.cart-list table{
+    width: 100%;
+    overflow-wrap: break-word;
 }
