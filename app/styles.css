@@ -1,0 +1,22 @@
+body ul{
+    margin-left: 0;
+    padding-left: 0;
+}
+body ul li{
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+.product-list{
+    width: 80%;
+    float: left;
+}
+.product-list ul li{
+    width: 200px;
+    margin: 5px;
+    float: left;
+}
+.cart-list{
+    width: 20%;
+    float: right;
+}

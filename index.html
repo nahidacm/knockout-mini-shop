@@ -6,28 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mini shop</title>
     <script type='text/javascript' data-main="app" src="lib/require.js"></script>
-    <!-- <script type='text/javascript' src='knockout-3.4.2.js'></script> -->
+    <link rel="stylesheet" href="app/styles.css">
 </head>
 <body>
     <h1>MiniShop</h1>
+    <div class="product-list">
+        <h4>Awesome Products</h4>
+        <ul data-bind="foreach: products">
+            <li>
+                <img data-bind="attr: { src: image}"/>
+                <span data-bind="text: name" class="product_name"></span>
+                <span data-bind="text: price" class="product_price"></span>
+                <button data-bind="click: $parent.addToCart">Add To Cart</button>
+            </li>
+        </ul>
+    </div>
+    <div class="cart-list">
+        <h4>My Cart</h4>
+        <ul data-bind="foreach: cart_items">
+            <li>
+                <span data-bind="text: product.name"></span>
+                <span data-bind="text: quantity"></span>
+                <span data-bind="text: product.price"></span>
+            </li>
+        </ul>
+    </div>
+    
 
-    <h4>Awesome Products</h4>
-    <ul data-bind="foreach: products">
-        <li>
-            <span data-bind="text: name" class="product_name"></span>
-            <span data-bind="text: price" class="product_price"></span>
-            <button data-bind="click: $parent.addToCart">Add To Cart</button>
-        </li>
-    </ul>
-
-    <h4>My Cart</h4>
-    <ul data-bind="foreach: cart_items">
-        <li>
-            <span data-bind="text: product.name"></span>
-            <span data-bind="text: quantity"></span>
-            <span data-bind="text: product.price"></span>
-        </li>
-    </ul>
+    
 
 </body>
 </html>
